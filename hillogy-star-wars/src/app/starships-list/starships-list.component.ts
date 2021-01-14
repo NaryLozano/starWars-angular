@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { ShipsService } from './../ships.service';
 import { Component, OnInit } from '@angular/core';
 import { Ship } from './../ship'
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,15 +13,22 @@ import { Ship } from './../ship'
 export class StarshipsListComponent implements OnInit {
 
   starships: any;
-  starshipslist: any;
+  starshipsList: any;
 
-  constructor(private shipsService: ShipsService) { }
+  get shipId(){
+    return this.route.snapshot.paramMap.get('id')!;
+  }
+  ship$ = this.shipsService.getStarshipId(this.shipId)
+
+  constructor(private shipsService: ShipsService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.shipsService.getShips().subscribe((res) => {
       this.starships = res;
-      this.starshipslist = this.starships.results
-      console.log(this.starshipslist);
+      this.starshipsList = this.starships.results
+      //console.log(this.starshipsList);
+      console.log(this.ship$);
+      //failed the retrieving of the id
     })
   }
 

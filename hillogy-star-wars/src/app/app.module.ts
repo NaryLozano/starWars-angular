@@ -14,11 +14,13 @@ import { AppComponent } from './app.component';
 import { StarshipsListComponent } from './starships-list/starships-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StarshipsListComponent
+    StarshipsListComponent,
+    StarshipDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -30,12 +30,15 @@ export class ShipsService {
     public getShips(){
       return this.http.get(this.starwarsUrl);
     }
-  //getShips(): Observable<Ship[]> {
-  //   return this.http.get<Ship[]>(this.starwarsUrl)
-  //   .pipe(
-  //    tap(),
-   //   tap((ships)=> this.ships$.next(ships)),
-  //    catchError(this.handleError('getShips',[]))
-  //  );
-  //   }
+
+    //public getStarship (id:string | null) {
+    //  const url = `${this.starwarsUrl}/:id=${id}`;
+    //  console.log(this.http.get(url))
+    //  return this.http.get(url)
+    //  
+    //}
+    public getStarshipId(id: string){
+      const url=`${this.starwarsUrl}/?id=${id}`;
+      return this.http.get(url);
+    }
 }
