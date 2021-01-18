@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "hillogy-star-wars": {
+      "hosting": {
+        "hillogy-star-wars": [
+          "hillogy-star-wars"
+        ]
+      }
+    }
+  }
+}

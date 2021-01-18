@@ -42,5 +42,9 @@ export class ShipsService {
       const url =`${this.starwarsUrl}/?page=${pageNum}`;
       return this.http.get(url);
     }
+    public prevPage(pageNum: number){
+      const url =`${this.starwarsUrl}/?page=${pageNum}`;
+      return this.http.get(url);
+    }
 
 }

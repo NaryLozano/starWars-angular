@@ -3,6 +3,7 @@ import { ShipsService } from './../ships.service';
 import { Component, OnInit } from '@angular/core';
 import { Ship } from './../ship'
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -14,13 +15,13 @@ export class StarshipsListComponent implements OnInit {
 
   starships: any;
   starshipsList: any;
-  pageNum :number =1;
-  
+  pageNum :number =0;
+  //setPageNum :number = 1;
 
   constructor(private shipsService: ShipsService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.pagination(1);
+    this.pagination();
 
   }
     getships(){
@@ -31,15 +32,26 @@ export class StarshipsListComponent implements OnInit {
         console.log(this.starshipsList);
       })
     }
-    pagination(pageNum : number){
-      this.shipsService.changePage(pageNum).subscribe((res) =>{
-        this.pageNum++;
+    pagination(){
+      this.pageNum++;
+      this.shipsService.changePage(this.pageNum).subscribe((res) =>{
         this.starships =res;
         this.starshipsList= this.starships.results.map((obj : any) => (
           { ...obj, id: `${obj.url.split('/')[5]}` }));
       })
-      console.log(pageNum);
+      console.log(this.pageNum);
     }
+
+    prevPage(){
+      this.pageNum--;
+      this.shipsService.changePage(this.pageNum).subscribe((res) =>{
+        this.starships =res;
+        this.starshipsList= this.starships.results.map((obj : any) => (
+          { ...obj, id: `${obj.url.split('/')[5]}` }));
+      })
+      console.log(this.pageNum);
+      }
+      
     
 }
 
