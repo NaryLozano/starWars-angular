@@ -10,7 +10,7 @@ import { catchError, tap} from 'rxjs/operators';
 })
 export class ShipsService {
 
-  public starwarsUrl = 'https://swapi.dev/api/starships/'  
+  public starwarsUrl = 'https://swapi.dev/api/starships'  
   //ships$ = new Subject<Ship[]>()
 
   constructor( 
@@ -31,14 +31,9 @@ export class ShipsService {
       return this.http.get(this.starwarsUrl);
     }
 
-    //public getStarship (id:string | null) {
-    //  const url = `${this.starwarsUrl}/:id=${id}`;
-    //  console.log(this.http.get(url))
-    //  return this.http.get(url)
-    //  
-    //}
+  
     public getStarshipId(id: string){
-      const url=`${this.starwarsUrl}/?id=${id}`;
+      const url=`${this.starwarsUrl}/${id}`;
       return this.http.get(url);
     }
 }

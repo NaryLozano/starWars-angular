@@ -1,3 +1,4 @@
+
 import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 import { StarshipsListComponent } from './starships-list/starships-list.component';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,7 @@ import { RouterModule, Routes} from '@angular/router';
 
 const routes: Routes =[
   { path: 'list', component: StarshipsListComponent},
-  { path: 'id', component: StarshipDetailComponent}
+  { path: 'detail/:id', component: StarshipDetailComponent}
 ]
 
 

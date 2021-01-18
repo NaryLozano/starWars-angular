@@ -1,23 +1,21 @@
-
 <div  class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
-    <div  *ngFor="let starship of starshipsList" fxFlex="20%">
-      <a routerLink="id"><mat-card-title >
-        <mat-card-title >{{starship.name}}</mat-card-title>
-        <mat-card-subtitle >{{starship.model}}</mat-card-subtitle>
-        <mat-card-subtitle >{{starship.url}}</mat-card-subtitle>
-      </mat-card-title></a>
-      <mat-card-content>
-        <p >
-          {{starship.manufacturer}}
-          {{starship.url}}
-        </p>
-      </mat-card-content>
-     
-    </div>
-    
-  </div>
-  <div>
-    <!--TODO add pagination, the api tr 10 spaceships per pg-->
-    <button>add pagination</button>
+  <div  *ngFor="let starship of starshipsList" fxFlex="20%">
+    <a routerLink="/detail/{{starship.id}}"><mat-card-title >
+      <mat-card-title >{{starship.name}}</mat-card-title>
+      <mat-card-subtitle >{{starship.model}}</mat-card-subtitle>
+      <mat-card-subtitle >{{starship.url}}</mat-card-subtitle>
+    </mat-card-title></a>
+    <mat-card-content>
+      <p >
+        {{starship.manufacturer}}
+        {{starship.url}}
+      </p>
+    </mat-card-content>
+   
   </div>
   
+</div>
+<div>
+  <!--TODO add pagination, the api tr 10 spaceships per pg-->
+  <button>add pagination</button>
+</div>

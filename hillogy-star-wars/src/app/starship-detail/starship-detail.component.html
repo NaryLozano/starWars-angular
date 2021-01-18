@@ -1,20 +1,21 @@
-
 <div *ngIf="ship$ | async as ship" class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
-    <div  fxFlex="20%">
-      <mat-card-title >
-        <mat-card-title ></mat-card-title>
-        <mat-card-subtitle >hey</mat-card-subtitle>
-      </mat-card-title>
-      <mat-card-content>
-        <p >
-          
-        </p>
-      </mat-card-content>
-     
-    </div>
-    
+  <div  fxFlex="20%">
+    <mat-card-title >
+      <mat-card-title >{{ship?.name}}</mat-card-title>
+      
+      <mat-card-subtitle>{{ship?.model}}</mat-card-subtitle>
+      <mat-card-subtitle >{{ship?.manufacturer}}</mat-card-subtitle>
+    </mat-card-title>
+    <mat-card-content>
+      <p >
+        
+      </p>
+    </mat-card-content>
+   
   </div>
-  <div>
-    <!--TODO add pagination, the api tr 10 spaceships per pg-->
-    <button>add pagination</button>
-  </div>
+  
+</div>
+<div>
+  <!--TODO add pagination, the api tr 10 spaceships per pg-->
+  <button>add pagination</button>
+</div>

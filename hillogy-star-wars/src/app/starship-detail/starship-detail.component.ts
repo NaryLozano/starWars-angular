@@ -13,20 +13,23 @@ import { Ship } from './../ship';
   styleUrls: ['./starship-detail.component.css']
 })
 export class StarshipDetailComponent implements OnInit {
-//WRONG METHOD, FIND SOLUTION TO GET SHIP ID
+
+  oneShip: any;
+
   get shipId(){
     return this.route.snapshot.paramMap.get('id')!;
   }
 
   ship$ = this.shipsService.getStarshipId(this.shipId)
+
+
   constructor(private shipsService: ShipsService,public route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.ship$);
+    console.log(this.shipId);
+    this.ship$.subscribe((res) => {
+      this.oneShip = res;
+      console.log(this.oneShip)
+    })
   }
-
- 
-  
-
-
 }

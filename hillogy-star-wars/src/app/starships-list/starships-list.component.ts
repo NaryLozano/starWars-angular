@@ -15,22 +15,25 @@ export class StarshipsListComponent implements OnInit {
   starships: any;
   starshipsList: any;
 
-  get shipId(){
-    return this.route.snapshot.paramMap.get('id')!;
-  }
-  ship$ = this.shipsService.getStarshipId(this.shipId)
 
   constructor(private shipsService: ShipsService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.shipsService.getShips().subscribe((res) => {
       this.starships = res;
-      this.starshipsList = this.starships.results
-      //console.log(this.starshipsList);
-      console.log(this.ship$);
-      //failed the retrieving of the id
+      this.starshipsList = this.starships.results.map((obj : any) => (
+        { ...obj, id: `${obj.url.split('/')[5]}` }));
+      console.log(this.starshipsList);
     })
   }
 
 
 }
+
+ 
+    
+
+
+  
+
+
