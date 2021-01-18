@@ -14,23 +14,36 @@ export class StarshipsListComponent implements OnInit {
 
   starships: any;
   starshipsList: any;
-
+  pageNum :number =1;
+  
 
   constructor(private shipsService: ShipsService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.shipsService.getShips().subscribe((res) => {
-      this.starships = res;
-      this.starshipsList = this.starships.results.map((obj : any) => (
-        { ...obj, id: `${obj.url.split('/')[5]}` }));
-      console.log(this.starshipsList);
-    })
+    this.pagination(1);
+
   }
-
-
+    getships(){
+      this.shipsService.getShips().subscribe((res) => {
+        this.starships = res;
+        this.starshipsList = this.starships.results.map((obj : any) => (
+          { ...obj, id: `${obj.url.split('/')[5]}` }));
+        console.log(this.starshipsList);
+      })
+    }
+    pagination(pageNum : number){
+      this.shipsService.changePage(pageNum).subscribe((res) =>{
+        this.pageNum++;
+        this.starships =res;
+        this.starshipsList= this.starships.results.map((obj : any) => (
+          { ...obj, id: `${obj.url.split('/')[5]}` }));
+      })
+      console.log(pageNum);
+    }
+    
 }
 
- 
+ //http://swapi.dev/api/starships/?page=2", 
     
 
 

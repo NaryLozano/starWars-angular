@@ -12,6 +12,7 @@ export class ShipsService {
 
   public starwarsUrl = 'https://swapi.dev/api/starships'  
   //ships$ = new Subject<Ship[]>()
+  pageNum : number =1;
 
   constructor( 
     private http: HttpClient
@@ -36,4 +37,10 @@ export class ShipsService {
       const url=`${this.starwarsUrl}/${id}`;
       return this.http.get(url);
     }
+
+    public changePage(pageNum: number){
+      const url =`${this.starwarsUrl}/?page=${pageNum}`;
+      return this.http.get(url);
+    }
+
 }
